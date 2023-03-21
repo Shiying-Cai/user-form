@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="row">
+        <div class = 'col-md-6 offset-md-3'>
+            <h2>User Input form</h2>
+            <form (ngSubmit)="onSubmit()" #userform="ngForm">
+                
+                <!-- name input-->
+                <div class = "form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="user.name" required maxlength="150" #name="ngModel" placeholder="Enter your Name ">
+                    <div [hidden]="name.valid || name.pristine" class="alert alert-danger"> 
+                        Name is required
+                    </div>
+                </div>
+
+                <!-- age input-->
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" class="form-control" id="age" name="age" [(ngModel)]="user.age" required max="124" pattern="^[0-9]*$" #age="ngModel">
+                    <div [hidden]="age.valid || age.pristine" class="alert alert-danger"> 
+                        Age is required and must be a number
+                    </div>
+                </div>
+                
+                <!--season input-->
+                <div class='form-group'>
+                    <label for="favoriteSeason">Favorite season</label>
+                    <select class="form-control" id="favoriteSeason" name="favoriteSeason" [(ngModel)]="user.favoriteSeason" required #favoriteSeason="ngModel">
+                        <option *ngFor="let season of favoriteSeasons" [value]="season">{{season}}</option>
+                    </select>
+                    <div [hidden]="favoriteSeason.valid || favoriteSeason.pristine" class="alert alert-danger"> 
+                        Favorite season is required
+                    </div>
+                </div>
+                
+
+                <!--Drive input-->
+                <div class="form-group">
+                    <label>Can you drive a car?</label>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="canDrive" [(ngModel)]="user.canDrive" [value]="true" required>Yes
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="canDrive" [(ngModel)]="user.canDrive" [value]="false" required>No
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Sumbit button -->
+                <button type="submit" class="btn btn-success" [disabled]="!userform.form.valid" click="newUser()">Submit</button>
+
+
+                <!-- Reset button -->
+                <button type="button" class="btn btn-default" (click)="newUser(); userform.reset()" (click)="submitted=false">Reset</button>
+
+            </form>   
+            
+            <div *ngIf="submitted">
+                <h2>You submitted the following:</h2>
+                <div class="row">
+                <div class="col-xs-3">Name</div>
+                <div class="col-xs-9">{{ user.name }}</div>
+                </div>
+                <div class="row">
+                <div class="col-xs-3">Age</div>
+                <div class="col-xs-9">{{ user.age }}</div>
+                </div>
+                <div class="row">
+                <div class="col-xs-3">Favorite Season</div>
+                <div class="col-xs-9">{{ user.favoriteSeason }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">Can drive? </div>
+                    <div class="col-xs-9">{{ user.canDrive}}</div>
+                </div>
+                <br>
+                <button type="button" class="btn btn-primary" (click)="submitted=false">Edit</button>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+

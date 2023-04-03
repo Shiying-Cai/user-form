@@ -2,7 +2,7 @@
 
 # SampleWebsite
 
-This is a website built using [Angular](https://github.com/angular/angular-cli) that allows users to input their information using a template-driven form. The project has been deployed using [GitHub Pages](https://pages.github.com/) and can be accessed at https://shiying-cai.github.io/user-form/. The project has been developed by following the [official Angular template-driven form tutorial](https://github.com/angular/angular-cli).
+This is a website built using [Angular](https://github.com/angular/angular-cli) that allows users to input their information using a template-driven form. The project has been deployed using [GitHub Pages](https://pages.github.com/) and can be accessed at https://shiying-cai.github.io/user-form/. The project has been developed by following the [official Angular template-driven form tutorial](https://angular.io/guide/forms).
 
 
 
